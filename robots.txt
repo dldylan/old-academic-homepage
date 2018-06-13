@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /js
+Disallow: /css
+Disallow: /icons
+Disallow: /font-awsome
+
+Sitemap: https://dongleizhang.com/sitemap.xml
