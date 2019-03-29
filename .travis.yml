@@ -2,23 +2,19 @@ language: python
 
 before_install:
   - export TZ='Asia/Shanghai'
-  - git clone https://github.com/dldylan/dldylan.github.io.git
-  - cd dldylan.github.io
 
 install: true
 
 script: true
 
 after_success:
+  - git clone https://github.com/dldylan/dldylan.github.io.git
+  - cd dldylan.github.io
   - git config --global user.name "dldylan"
   - git config --global user.email "zjpjzdl@qq.com"
-  - sed -i "s/CODING_TOKEN/${CODING_TOKEN}/g" scripts/deploy.sh
-
-deploy:
-  provider: script
-  script: bash scripts/deploy.sh
-  on:
-    branch: master
+  - git add .
+  - git commit -m "Auto Updated by Travis CI"
+  - git push --force --quiet "https://dldylan:${CODING_TOKEN}@git.dev.tencent.com/dldylan/dldylan.coding.me.git" master:master
 
 notifications:
   email:
