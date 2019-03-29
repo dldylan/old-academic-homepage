@@ -1,0 +1,12 @@
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh
+  on:
+    branch: master
+
+notifications:
+  email:
+    recipients:
+      - zjpjzdl@qq.com
+    on_success: always # default: change
+    on_failure: always # default: always
