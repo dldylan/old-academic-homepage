@@ -2,14 +2,18 @@ language: python
 
 before_install:
   - export TZ='Asia/Shanghai'
+  - git clone https://github.com/dldylan/dldylan.github.io.git
+  - cd dldylan.github.io
 
 install: true
 
 script: true
 
 after_success:
+  - git config --global user.name "dldylan"
+  - git config --global user.email "zjpjzdl@qq.com"
   - sed -i "s/CODING_TOKEN/${CODING_TOKEN}/g" scripts/deploy.sh
-  
+
 deploy:
   provider: script
   script: bash scripts/deploy.sh
