@@ -2,11 +2,14 @@ language: python
 
 before_install:
   - export TZ='Asia/Shanghai'
-  
+
 install: true
 
 script: true
 
+after_success:
+  - sed -i "s/CODING_TOKEN/${CODING_TOKEN}/g" scripts/deploy.sh
+  
 deploy:
   provider: script
   script: bash scripts/deploy.sh
